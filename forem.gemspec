@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'forem-rdiscount'
   s.add_dependency 'rails', '~>3.1.0'
   s.add_dependency 'simple_form'
-  s.add_dependency 'kaminari'
   s.add_dependency 'cancan'
+  s.add_dependency 'will_paginate'
 end

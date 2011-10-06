@@ -10,6 +10,9 @@ require "devise"
 require "devise/rails"
 require 'jquery-rails'
 
+require 'will_paginate'
+require 'will_paginate/active_record'
+
 module Dummy
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
