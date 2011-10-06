@@ -17,7 +17,7 @@ describe "forums" do
       FactoryGirl.create(:post, :topic => @topic_2, :created_at => Time.now + 30.seconds)
       @topic_3 = FactoryGirl.create(:topic, :subject => "PINNED!", :forum => forum, :pinned => true)
       @topic_4 = FactoryGirl.create(:topic, :subject => "HIDDEN!", :forum => forum, :hidden => true)
-      visit forum_path(forum.id)
+
     end
 
     it "shows the title" do
@@ -52,6 +52,21 @@ describe "forums" do
         topic_subjects = Nokogiri::HTML(page.body).css(".topics tbody tr .new_posts")
         topic_subjects.should_not be_empty
       end
+    end
+  end
+
+  context "visiting a forum with a lot of topics" do
+    before do
+      60.times { FactoryGirl.create(:topic, :forum => forum) }
+      visit forum_path(forum.id)
+    end
+
+    it "should split it into multiple pages" do
+      page_links = Nokogiri::HTML(page.body).css(".pages").text.gsub(/\s/,'').should == "Pages:123Next›Last»"
+      page_links = Nokogiri::HTML(page.body).css(".pages .page.current").text.strip.should == "1"
+      page_links = Nokogiri::HTML(page.body).css(".pages .page a").
+                      map{|n| n['href']}.should ==
+                      ["/forem/forums/#{forum.id}?page=2", "/forem/forums/#{forum.id}?page=3"]
     end
   end
 end
