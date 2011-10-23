@@ -22,9 +22,20 @@
     <%= link_to t(".lock.#{@topic.locked}"), toggle_lock_admin_topic_path(@topic), :method => :put %> |
     <%= link_to t(".pin.#{@topic.pinned}"), toggle_pin_admin_topic_path(@topic), :method => :put %>
   <% end %>
-  <%= forem_paginate @posts %>
+
+  <% if @posts.num_pages > 1 %>
+    <div class='pages'>
+      <%= t('forem.common.pages') -%>: <%= forem_paginate @posts %>
+    </div>
+  <% end %>
+
   <div id='posts'>
     <%= render :partial => "forem/posts/post", :collection => @posts, :locals => { :preview => false } %>
   </div>
-  <%= forem_paginate @posts %>
+
+  <% if @posts.num_pages > 1 %>
+    <div class='pages'>
+    <%= t('forem.common.pages') -%>: <%= forem_paginate @posts %>
+    </div>
+  <% end %>
 </div>
