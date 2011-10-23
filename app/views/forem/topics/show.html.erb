@@ -26,4 +26,5 @@
   <div id='posts'>
     <%= render :partial => "forem/posts/post", :collection => @posts, :locals => { :preview => false } %>
   </div>
+  <%= forem_paginate @posts %>
 </div>
