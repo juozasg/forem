@@ -6,8 +6,8 @@ module Forem
     def new
       authorize! :reply, @topic
       @post = @topic.posts.build
+      @reply_to = @topic.posts.where({:id => params[:reply_to_id]}).first
       if params[:quote]
-        @reply_to = @topic.posts.find(params[:reply_to_id])
         @post.text = view_context.forem_quote(@reply_to.text)
       end
     end

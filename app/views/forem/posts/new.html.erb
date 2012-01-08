@@ -1,8 +1,9 @@
-<%= render :partial => 'forem/forums/head', :locals => { :forum => @topic.forum } %>
+<h2 id='new_post_title'><%= t("forem.post.new") %></h2>
 
-<h2><%= t("forem.post.new") %></h2>
-
-<%= simple_form_for [@topic, @post] do |f| %>
-  <%= render :partial => "form", :locals => { :f => f } %>
-  <%= f.submit t("forem.post.buttons.reply") %>
+<% if @reply_to %>
+<div id='posts'>
+  <%= render :partial => 'post', :locals => {:post => @reply_to, :preview => true }%>
+</div>
+<% else %>
+<h3 id='topic_title'><%= @topic.subject %></h3>
 <% end %>
