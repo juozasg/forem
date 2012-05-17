@@ -27,8 +27,11 @@
     <div class="moderation"><%= t(".pending_review") %></div>
   <% end %>
 
-  <%= forem_paginate @posts %>
+  <%= forem_pages_widget(@posts) %>
+
   <div id='posts'>
     <%= render :partial => "forem/posts/post", :collection => @posts %>
   </div>
+
+  <%= forem_pages_widget(@posts) %>
 </div>
