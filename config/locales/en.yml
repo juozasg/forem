@@ -136,7 +136,7 @@ en:
     post:
       buttons:
         reply: Post Reply
-        edit: Edit
+        edit: Save Changes
       created: Your reply has been posted.
       new: Post reply to
       edit: Edit

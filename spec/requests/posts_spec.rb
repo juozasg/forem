@@ -79,7 +79,7 @@ describe "posts" do
             click_link("Edit")
         end
         fill_in "Text", :with => "this is my edit"
-        click_button "Edit"
+        click_button "Save Changes"
         flash_notice!("Your post has been edited")
         page.should have_content("this is my edit")
       end
@@ -88,7 +88,7 @@ describe "posts" do
         second_post = topic.posts[1]
         visit edit_topic_post_path(topic, second_post)
         fill_in "Text", :with => "an evil edit"
-        click_button "Edit"
+        click_button "Save Changes"
         flash_alert!("Your post could not be edited")
       end
 
