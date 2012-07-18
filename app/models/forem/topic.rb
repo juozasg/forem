@@ -1,3 +1,5 @@
+require 'friendly_id'
+
 module Forem
   class Topic < ActiveRecord::Base
     include Workflow
@@ -10,6 +12,9 @@ module Forem
       state :spam
       state :approved
     end
+
+    extend FriendlyId
+    friendly_id :subject, :use => :slugged
 
     attr_accessible :subject, :posts_attributes
 
