@@ -6,7 +6,7 @@ module Forem
     friendly_id :title, :use => :slugged
 
     belongs_to :category
-    has_many :topics, :dependent => :destroy
+    has_many :topics, :dependent => :destroy, :order => 'last_post_at DESC, created_at DESC'
     has_many :posts, :through => :topics, :dependent => :destroy
     has_many :views, :through => :topics, :dependent => :destroy
 
