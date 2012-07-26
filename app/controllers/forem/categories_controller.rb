@@ -1,5 +1,7 @@
 module Forem
   class CategoriesController < ApplicationController
+    helper 'forem/topics'
+
     load_and_authorize_resource
 
     def show
