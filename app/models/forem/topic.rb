@@ -109,6 +109,7 @@ module Forem
       if user
         view = views.find_or_create_by_user_id(user.id)
         view.increment!("count")
+        view.touch
       end
     end
 
