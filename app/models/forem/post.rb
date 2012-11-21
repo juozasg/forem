@@ -27,7 +27,7 @@ module Forem
     validates :text, :presence => true
 
     after_create :set_topic_last_post_at
-    after_create :subscribe_replier
+    # after_create :subscribe_replier
     after_create :email_topic_subscribers
     after_create :skip_pending_review_if_user_approved
 

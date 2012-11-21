@@ -9,6 +9,7 @@ require 'workflow'
 module Forem
   mattr_accessor :user_class, :theme, :formatter, :default_gravatar, :default_gravatar_image,
                  :user_profile_links, :email_from_address, :autocomplete_field,
+                 :site_name,
                  :avatar_user_method
 
 

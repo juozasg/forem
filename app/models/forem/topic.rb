@@ -29,7 +29,7 @@ module Forem
     validates :subject, :presence => true
 
     before_save :set_first_post_user
-    after_create :subscribe_poster
+    # after_create :subscribe_poster
     after_create :skip_pending_review_if_user_approved
     after_save :approve_user_and_posts, :if => :approved?
 
