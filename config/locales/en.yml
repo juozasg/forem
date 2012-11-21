@@ -187,6 +187,7 @@ en:
   # General stuff
   time_ago_in_words: "%{time} ago"
   ago: " ago"
+  edited: "edited"
   ago_by: " ago by"
   by: by
   started_by: "Started by "
